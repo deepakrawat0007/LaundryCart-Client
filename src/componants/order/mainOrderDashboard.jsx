@@ -1,12 +1,20 @@
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
 import SideNavbar from "./sideNavbar/navbar";
 import "./mainOrderDashboard.css"
+import OrderNavBar from "./navbar/navbar";
 import CancelOrder from "./cancel-order/cancelOrder";
+import FooterOrder from "./footer/footer";
+import {useNavigate} from "react-router-dom";
 
 const OrderMain = () => {
-    
+    const navigate = useNavigate()
+    useEffect(() => {
+        if (!localStorage.getItem('token')) {
+            navigate('/')
+        }
+    }, [])
     // let ordersDetail = [];
-    let ordersDetail = [{location: "Ludhiana"},{location: "Ludhiana"},{location: "Ludhiana"},{location: "Ludhiana"},{location: "Ludhiana"},{location: "Ludhiana"},{location: "Ludhiana"},{location: "Ludhiana"},{location: "Ludhiana"},{location: "Ludhiana"},{location: "Ludhiana"},{location: "Ludhiana"},{location: "Ludhiana"},{location: "Ludhiana"},{location: "Ludhiana"},{location: "Ludhiana"},{location: "Ludhiana"},{location: "Ludhiana"},{location: "Ludhiana"},{location: "Ludhiana"}];
+    let ordersDetail = [];
 
     const [cancelDisplay, setCancelDisplay] = useState("none")
     // const [cancelDisplay, setCancelDisplay] = useState("none")
@@ -16,6 +24,7 @@ const OrderMain = () => {
     
     return (
         <>
+        <OrderNavBar/>
             <div className="orders-container">
                 <SideNavbar/>
                 <div className="orders-top-bar">
@@ -89,6 +98,7 @@ const OrderMain = () => {
                 
                 
             </div>
+            <FooterOrder/>
         </>
     )
 }
