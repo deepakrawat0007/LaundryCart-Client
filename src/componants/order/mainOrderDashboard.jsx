@@ -14,7 +14,7 @@ const OrderMain = () => {
         }
     }, [])
     // let ordersDetail = [];
-    let ordersDetail = [];
+    let ordersDetail = [{location: "Ludhiana"},{location: "Ludhiana"},{location: "Ludhiana"},{location: "Ludhiana"},{location: "Ludhiana"},{location: "Ludhiana"},{location: "Ludhiana"},{location: "Ludhiana"},{location: "Ludhiana"},{location: "Ludhiana"},{location: "Ludhiana"},{location: "Ludhiana"},{location: "Ludhiana"},{location: "Ludhiana"},{location: "Ludhiana"},{location: "Ludhiana"},{location: "Ludhiana"},{location: "Ludhiana"},{location: "Ludhiana"},{location: "Ludhiana"}];
 
     const [cancelDisplay, setCancelDisplay] = useState("none")
     // const [cancelDisplay, setCancelDisplay] = useState("none")
