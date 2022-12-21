@@ -1,6 +1,6 @@
 /* OrderPageHeader CSS */
 
-.orders-top-bar{
+.orders-top-bar {
     padding: 2rem;
     padding-bottom: 1rem;
 }
@@ -11,8 +11,8 @@
 
 .search {
     float: right;
-    border: 1px solid rgb(88,97,174);
-    color: rgb(88,97,174);
+    border: 1px solid rgb(88, 97, 174);
+    color: rgb(88, 97, 174);
 }
 
 .search-bar {
@@ -29,15 +29,15 @@
 
 .search-bar:focus {
     outline: none;
-    border-color: #333; 
+    border-color: #333;
 }
 
 .search-icon {
     position: absolute;
-    top: 7.5vh;
-    right: 16vw; 
-    transform: translateY(-50%); 
-    font-size: 18px; 
+    top: 19vh;
+    right: 15.5vw;
+    transform: translateY(-50%);
+    font-size: 18px;
     color: #333;
 }
 
@@ -45,9 +45,9 @@
 /**********************************************************************************/
 /* zero Page Design */
 
-.zero-order-page-main{
+.zero-order-page-main {
     display: flex;
-    height: 65vh;
+    height: 90vh;
     align-items: center;
     justify-content: center;
 }
@@ -98,7 +98,7 @@ table {
     color: white;
 }
 
-.table-header > tr > td {
+.table-header>tr>td {
     padding: 0px;
 }
 
@@ -107,7 +107,7 @@ td {
     text-align: center;
 }
 
-.some-order-page-main > table > .table-header > tr > td {
+.some-order-page-main>table>.table-header>tr>td {
     width: 200px;
     height: 35px;
 }
@@ -121,10 +121,12 @@ td {
 }
 
 
-.cancel-order:hover, .view-details:hover {
+.cancel-order:hover,
+.view-details:hover {
     cursor: pointer;
     color: red;
 }
+
 /* .view-details {
     cursor: pointer;
 } */

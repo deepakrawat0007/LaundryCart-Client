@@ -45,12 +45,11 @@ const Login = () => {
             .then((res) => {
                 setLoading(false)
                 setError()
-                console.log(res.data)
-                alert('Login Success')
+                // console.log(res.data)
                 localStorage.setItem('token', res.data.Token)
                 localStorage.setItem('username', res.data.Name)
                 localStorage.setItem('address', res.data.Address)
-                navigate('/')   //orderpage route
+                navigate('/order')   //orderpage route
             }).catch((e) => {
                 setLoading(false)
                 setError(JSON.stringify(e.response.data))
