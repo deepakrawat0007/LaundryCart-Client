@@ -5,6 +5,7 @@ import OrderNavBar from "./navbar/navbar";
 import CancelOrder from "./cancel-order/cancelOrder";
 import FooterOrder from "./footer/footer";
 import {useNavigate} from "react-router-dom";
+const API = process.env.REACT_APP_API || "http://localhost:5000"
 
 const OrderMain = () => {
     const navigate = useNavigate()
@@ -12,12 +13,30 @@ const OrderMain = () => {
         if (!localStorage.getItem('token')) {
             navigate('/')
         }
-    }, [])
-    // let ordersDetail = [];
-    let ordersDetail = [{location: "Ludhiana"},{location: "Ludhiana"},{location: "Ludhiana"},{location: "Ludhiana"},{location: "Ludhiana"},{location: "Ludhiana"},{location: "Ludhiana"},{location: "Ludhiana"},{location: "Ludhiana"},{location: "Ludhiana"},{location: "Ludhiana"},{location: "Ludhiana"},{location: "Ludhiana"},{location: "Ludhiana"},{location: "Ludhiana"},{location: "Ludhiana"},{location: "Ludhiana"},{location: "Ludhiana"},{location: "Ludhiana"},{location: "Ludhiana"}];
+    }, []);
+    
+    const [ordersDetail, setOrderDetail] = useState([]);
+    const [cancelDisplay, setCancelDisplay] = useState("none");
+    // console.log(ordersDetail)
+    
+    let token = localStorage.getItem("token");
+    // const token ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzE2MzE0MDcsImRhdGEiOiI2M2EyYTU5YjNiZDVhNjYwZDFkNzY0MWYiLCJpYXQiOjE2NzE2Mjc4MDd9.FzsA_ZL6jUF84AJUfzAfvnE2CHInbtfUj6QJiD9fS8A"
+    // console.log(token)
 
-    const [cancelDisplay, setCancelDisplay] = useState("none")
-    // const [cancelDisplay, setCancelDisplay] = useState("none")
+    useEffect(() => {
+        fetch(API + "/prevorder", {
+        method: "GET",
+        headers: {
+            Authorization: token
+        }
+        }).then(res => {
+            return res.json();
+        }).then(data => {
+            console.log(data.orders)
+            setOrderDetail(data.orders)
+        })
+    }, []);
+
 
 
 
@@ -73,19 +92,20 @@ const OrderMain = () => {
                         {ordersDetail.map((data, i) => {
                             return (
                                     <tr className="table-body" key={i}>
-                                        <td>{data.ordId}</td>
-                                        <td>{data.Date}</td>
-                                        <td>{data.location}</td>
-                                        <td>{data.city}</td>
-                                        <td>{data.phone}</td>
-                                        <td>{data.items}</td>
-                                        <td>{data.items * 5} </td>
+                                        <td>{data._id}</td>
+                                        <td>{data.createdAt}</td>
+                                        <td>Noida</td>
+                                        <td>Ludhiana</td>
+                                        <td>9875421356</td>
+                                        <td>{data.orders.length}</td>
+                                        <td>{data.total_price} </td>
                                         <td>{data.status}</td>
                                         <td className="cancel-order" onClick={() => setCancelDisplay("block")}>Cancel Order</td>
                                         <td className="view-details"><i className="fa-solid fa-eye"></i></td>
                                     </tr>
                             )
                         })}
+
                         </tbody>
                     </table>
                 </div>
