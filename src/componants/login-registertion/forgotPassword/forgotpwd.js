@@ -2,16 +2,19 @@ import React from "react";
 import "../login/login.css"
 import Header from "../../headers/header_login";
 import { useNavigate } from "react-router-dom";
-import "./forgotpwd.css"
+import "./forgotpwd.css";
+import "../registeration/registration.css"
 import FooterLogin from "../../footers/footer";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useState } from "react";
 import Axios from 'axios';
-import load from "../../../Images/load.gif"
+import load from "../../../Images/load.gif";
+import tick from "../../../Images/tick.png";
 const API = process.env.REACT_APP_API || "http://localhost:5000"
 
 const ForgotPassword = () => {
     const [error, setError] = useState()
+    const [popup , setPopup] = useState(false)
     const [hide, setHide] = useState(true);
     const [loading, setLoading] = useState(false);
 
@@ -37,6 +40,10 @@ const ForgotPassword = () => {
         newdata[e.target.id] = e.target.value
         setData(newdata)
     }
+    const handlePopSubmit = ()=>{
+        setPopup(false)
+        navigate('/')
+    }
 
     const handleSubmit = (e) => {
         setLoading(true)
@@ -46,22 +53,26 @@ const ForgotPassword = () => {
             password: data.password
         })
             .then((res) => {
+               
                 setLoading(false)
+                setPopup(true)
                 setError()
                 // console.log(res.data)
-                navigate('/')  
             }).catch((e) => {
                 setLoading(false)
                 setError(JSON.stringify(e.response.data))
             })
+            
 
     }
 
     return (
         <>
-            <div className="full-wrapper">
+                       
+           
                 <Header />
                 {loading ? (<img className="loading" src={load} alt="loading" />) : ''}
+
                 <div className="login-container">
                     <div className="half">
                         <div className="para-line-1">LAUNDRY SERVICE</div>
@@ -71,6 +82,12 @@ const ForgotPassword = () => {
                         <button className="regitr-btn" onClick={RegisterRoute}>Register</button>
 
                     </div>
+                    {popup?(<div className="popup">
+                    <img src={tick} alt="popUp-Img" width="200px" height="200px"/>
+                    <h2>Password Reset SuccessFully!!</h2>
+                    <button className="popup-sub-btn" onClick={handlePopSubmit}>Sign-In</button>
+                </div>):""}
+                    
                     <div className="half-s">
                         <h2 className="heading">FORGOT PASSWORD</h2>
                         <form onSubmit={(e) => handleSubmit(e)} className="login-form">
@@ -83,7 +100,7 @@ const ForgotPassword = () => {
                             <button className="submit-sign-in">Forgot Password</button>
                         </form>
                     </div>
-                </div>
+ 
             </div>
             <FooterLogin />
 

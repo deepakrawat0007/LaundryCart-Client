@@ -1,18 +1,19 @@
-.full-wrapper {
-    position: relative;
-}
 
 .login-container {
+
     display: flex;
 }
 
 .half,
 .half-s {
+    
     width: 50%;
     height: 87vh;
 }
 
 .half-s {
+    position:  relative;
+    z-index: 1;
     background: #B9C0FD1A 0% 0% no-repeat padding-box;
     height: 87vh;
     opacity: 1;
@@ -121,6 +122,7 @@ input[type="email"],
 input[type="tel"],
 textarea,
 select {
+    
     outline: none;
 }
 
@@ -128,6 +130,7 @@ select {
 .form-email-error:hover,
 .form-pwd-error:hover,
 .form-pwd:hover {
+    
     border-bottom: 1px solid#4552C1;
 }
 

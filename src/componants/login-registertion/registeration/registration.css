@@ -154,6 +154,8 @@ label {
     border-left: 2px solid blue;
 }
 .popup{
+    position: absolute;
+    z-index: 2;
     width: 400px;
     background: lightblue;
     border-radius: 6px;
