@@ -6,7 +6,7 @@ import FooterLogin from "../../footers/footer";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useState } from "react";
 import Axios from 'axios';
-import load from "../../../Images/load.gif"
+import load from "../../../Images/load.gif";
 const API = process.env.REACT_APP_API || "http://localhost:5000"
 
 const Login = () => {

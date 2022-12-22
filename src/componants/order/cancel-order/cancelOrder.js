@@ -1,8 +1,29 @@
 import React, { useState } from "react";
+import Axios from "axios";
 import "./cancelOrder.css"
 
 const CancelOrder = (props) => {
-
+    
+    const cancelOrder = async () =>{
+        const token = localStorage.getItem("token");
+        console.log("calllll")
+        await fetch(`http://localhost:5000/updateorder/${props.orderId}`,{
+            method: "PUT",
+            headers : {
+                Authorization: token
+            }
+        })
+        props.setCancelDisplay("none");
+     
+        const tempOrders = props.ordersDetail.map((data)=>{
+            if(data._id == props.orderId){
+                data.status = 'canceled'
+            }
+            return data
+        })
+        props.setOrderDetail(tempOrders)
+        console.log(props.ordersDetail)
+    }
     
     return (
         <>
@@ -15,8 +36,8 @@ const CancelOrder = (props) => {
                     <div className="alert-body">
                         <aside className="alert-sign"><i className="fa-solid fa-triangle-exclamation fa-2x"></i></aside>
                         <div className="alert-msg-body">
-                            <div><p>Are you sure you want to cancel the order No: ORD3435</p></div>
-                            <div className="cancel-order-btn"><button>Proceed</button></div>
+                            <div><p>Are you sure you want to cancel the order No: {props.orderId}</p></div>
+                            <div className="cancel-order-btn"><button onClick={()=>{cancelOrder()}}>Proceed</button></div>
                         </div>
                     </div>
                 </div>
