@@ -17,11 +17,18 @@ const OrderMain = () => {
     
     const [ordersDetail, setOrderDetail] = useState([]);
     const [cancelDisplay, setCancelDisplay] = useState("none");
+    const [orderId, setOrderId] = useState(null);
     // console.log(ordersDetail)
     
     let token = localStorage.getItem("token");
     // const token ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzE2MzE0MDcsImRhdGEiOiI2M2EyYTU5YjNiZDVhNjYwZDFkNzY0MWYiLCJpYXQiOjE2NzE2Mjc4MDd9.FzsA_ZL6jUF84AJUfzAfvnE2CHInbtfUj6QJiD9fS8A"
     // console.log(token)
+
+    const cancelOrder = (orderId) => {
+        setCancelDisplay("block")
+        setOrderId(orderId)
+        console.log("orderid::",orderId)
+    }
 
     useEffect(() => {
         fetch(API + "/prevorder", {
@@ -99,7 +106,7 @@ const OrderMain = () => {
                                         <td>9875421356</td>
                                         <td>{data.orders.length}</td>
                                         <td>{data.total_price} </td>
-                                        <td>{data.status}</td>
+                                        <td style={{color: data.status === "canceled" ? "red" : "black"}}>{data.status}</td>
                                         <td className="cancel-order" onClick={() => setCancelDisplay("block")}>Cancel Order</td>
                                         <td className="view-details"><i className="fa-solid fa-eye"></i></td>
                                     </tr>
@@ -113,7 +120,7 @@ const OrderMain = () => {
                     </>
                 }
 
-                <CancelOrder display={cancelDisplay}  setCancelDisplay={setCancelDisplay}/>
+                <CancelOrder display={cancelDisplay}  setCancelDisplay={setCancelDisplay} orderId={orderId} ordersDetail={ordersDetail} setOrderDetail={setOrderDetail} />
 
                 
                 
