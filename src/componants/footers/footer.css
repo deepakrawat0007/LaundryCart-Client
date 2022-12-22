@@ -51,12 +51,18 @@
     letter-spacing: 0.16px;
     color: #182838;
     position: absolute;
-    top: 110%;
+    top: 114vh;
 
+ 
+
+}
+.cont-2 > p , .cont-4 > p , .cont-6 >p{
+    margin-bottom: 10px;
 }
 
 .cont-1 {
-    left: 70px;
+    left: 80px;
+    top: 113vh;
     font: normal normal medium 18px/24px Avenir;
 }
 

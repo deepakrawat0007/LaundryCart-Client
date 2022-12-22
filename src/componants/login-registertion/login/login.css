@@ -88,6 +88,8 @@
 }
 
 .form-email,
+.form-email-error,
+.form-pwd-error,
 .red-alert,
 .form-pwd {
     width: 322px;
@@ -105,7 +107,8 @@
     cursor: pointer;
 }
 
-.form-pwd {
+.form-pwd,
+.form-pwd-error {
     display: flexbox;
     float: left;
     margin-bottom: 15%;
@@ -122,6 +125,8 @@ select {
 }
 
 .form-email:hover,
+.form-email-error:hover,
+.form-pwd-error:hover,
 .form-pwd:hover {
     border-bottom: 1px solid#4552C1;
 }
@@ -149,8 +154,10 @@ select {
     display: flexbox;
     flex-wrap: wrap;
     flex-direction: column;
-
-
+}
+.form-email-error ,
+.form-pwd-error{
+    color: Red;
 }
 
 .loading {
@@ -163,7 +170,18 @@ select {
 .e-message {
     color: red;
     position: absolute;
+    left: 15%;
     bottom: 120%;
+}
+.forgot-pwd{
+    margin-top: 20px;
+    position: relative;
+    right: 37%;
+    color: #4552C1;
+    cursor: pointer;
+}
+.forgot-pwd:hover{
+    color: red;
 }
 
 @media screen and (max-width:600px){

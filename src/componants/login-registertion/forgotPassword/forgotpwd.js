@@ -1,7 +1,8 @@
 import React from "react";
-import "./login.css"
+import "../login/login.css"
 import Header from "../../headers/header_login";
 import { useNavigate } from "react-router-dom";
+import "./forgotpwd.css"
 import FooterLogin from "../../footers/footer";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useState } from "react";
@@ -9,7 +10,7 @@ import Axios from 'axios';
 import load from "../../../Images/load.gif"
 const API = process.env.REACT_APP_API || "http://localhost:5000"
 
-const Login = () => {
+const ForgotPassword = () => {
     const [error, setError] = useState()
     const [hide, setHide] = useState(true);
     const [loading, setLoading] = useState(false);
@@ -36,13 +37,11 @@ const Login = () => {
         newdata[e.target.id] = e.target.value
         setData(newdata)
     }
-    const handleForgotPwd = ()=>{
-        navigate('/forgotpassword')
-    }
+
     const handleSubmit = (e) => {
         setLoading(true)
         e.preventDefault()
-        Axios.post(API + "/login", {
+        Axios.put(API + "/forgotpassword", {
             username: data.username,
             password: data.password
         })
@@ -50,10 +49,7 @@ const Login = () => {
                 setLoading(false)
                 setError()
                 // console.log(res.data)
-                localStorage.setItem('token', res.data.Token)
-                localStorage.setItem('username', res.data.Name)
-                localStorage.setItem('address', res.data.Address)
-                navigate('/order')   //orderpage route
+                navigate('/')  
             }).catch((e) => {
                 setLoading(false)
                 setError(JSON.stringify(e.response.data))
@@ -76,7 +72,7 @@ const Login = () => {
 
                     </div>
                     <div className="half-s">
-                        <h2 className="form-head">SIGN IN</h2>
+                        <h2 className="heading">FORGOT PASSWORD</h2>
                         <form onSubmit={(e) => handleSubmit(e)} className="login-form">
                             <div className="side-line">
                                 <div className="e-message">{error}</div>
@@ -84,8 +80,7 @@ const Login = () => {
                                 <input type={hide?"password":"text"} className={!error?"form-pwd":"form-pwd-error"} id="password" value={data.password} onChange={(e) => { handleChange(e) }} placeholder="Password" />
                                 {hide ? <FaEyeSlash onClick={showPassword} size="1.2em" cursor="pointer" color="#77838F" /> : <FaEye onClick={HidePassword} size="1.2em" color="#77838F" cursor="pointer" />}
                             </div>
-                            <p className="forgot-pwd" onClick={handleForgotPwd}>forgot password?</p>
-                            <button className="submit-sign-in">Sign In</button>
+                            <button className="submit-sign-in">Forgot Password</button>
                         </form>
                     </div>
                 </div>
@@ -96,4 +91,4 @@ const Login = () => {
     )
 }
 
-export default Login
+export default ForgotPassword

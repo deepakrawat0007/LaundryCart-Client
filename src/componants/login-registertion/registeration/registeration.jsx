@@ -33,6 +33,7 @@ const Registration = () => {
 
     })
     const handleChange = (e) => {
+        setError()
         const newdata = { ...data }
         newdata[e.target.id] = e.target.value
         setData(newdata)
@@ -97,9 +98,9 @@ const Registration = () => {
                     <form onSubmit={(e) => { handleSubmit(e) }}  >
                         <div className="table">
                             <input type="text" id="name" placeholder="Name" onChange={(e) => handleChange(e)} value={data.name} required />
-                            <input type="email" id="email" placeholder="Email" onChange={(e) => handleChange(e)} value={data.email} required />
+                            <input type="email" id="email" className={error?"form-err":''} placeholder="Email" onChange={(e) => handleChange(e)} value={data.email} required />
                             <div className="side">
-                                <input type="tel" id="phone" pattern="[0-9]{10}" title="Ex:-9988776655" placeholder="Phone" onChange={(e) => handleChange(e)} value={data.phone} required />
+                                <input type="tel" id="phone"  className={error?"form-err":''} pattern="[0-9]{10}" title="Ex:-9988776655" placeholder="Phone" onChange={(e) => handleChange(e)} value={data.phone} required />
                                 <input type="text" id="state" placeholder="State" onChange={(e) => handleChange(e)} value={data.state} required />
                                 <input type="text" id="district" placeholder="District" onChange={(e) => handleChange(e)} value={data.district} required />
                                 <input type="text" id="address" placeholder="Address" onChange={(e) => handleChange(e)} value={data.address} required />
