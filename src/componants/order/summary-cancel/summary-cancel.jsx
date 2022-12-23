@@ -45,8 +45,8 @@ export default function Summary(props) {
       <div className="pg-bar">
       <div  style={{color:dataDetail.status === "Cancelled"?"red":"green" , width:dataDetail.status === "Cancelled"?"460px":"10px" , backgroundColor:dataDetail.status === "Cancelled"?"red":"green" , height:"10px" , borderRadius:"5px"}}></div>
       <span className="piked">pickedUp</span>
-      <span className="wash">Washed</span>
-      <span className="iron">Ironed</span>
+      <span className="wash">{dataDetail.status === "Cancelled"?"":"Washed"}</span>
+      <span className="iron">{dataDetail.status === "Cancelled"?"":"Ironed"}</span>
       <span className="del">{dataDetail.status === "Cancelled"?"Cancelled":"Delivered"}</span>
       </div>
       </div>
