@@ -4,7 +4,7 @@
 /* -------summary_holder------ */
 #summary_holder{
     width: 98.9vw;
-    height: 100vh;
+    min-height: 100vh;
     position: fixed;
     top:0;
     background-color: rgba(0, 0, 0, 0.315);
@@ -102,7 +102,9 @@
 }
 
 .summary_title_name{
+    padding-top: 10px;
     padding-left:6px;
+    padding-bottom: 24px;
 }
 
 .summary_prodduct_type{
@@ -130,7 +132,7 @@
     text-align: end;
     font-size: 1.3em;
     position: relative;
-    top: 35%;
+    top: 20%;
     padding: 10px;
     padding-right: 30px;
 }
@@ -144,6 +146,7 @@
 
 .address_title{
     margin: 20px;
+    padding-top: 18px;
 }
 
 .address_container{
@@ -179,9 +182,16 @@
     bottom: 44%;
     left: 29%;
 }
-
+/* -----------------error----------------------- */
+.summary_error{
+    color: red;
+    float: left;
+    position: relative;
+    top:45%
+}
 
 /* --------- summary_confirm ------------ */
+
 
 .summary_confirm{
     position: relative;
@@ -194,6 +204,7 @@
     height: 30px;
     border: 0;
     border-radius: 5px;
+    clear: both;
 }
 
 .summary_confirm:hover{
