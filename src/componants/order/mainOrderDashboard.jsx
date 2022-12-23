@@ -5,6 +5,7 @@ import OrderNavBar from "./navbar/navbar";
 import CancelOrder from "./cancel-order/cancelOrder";
 import FooterOrder from "./footer/footer";
 import {Link, useNavigate} from "react-router-dom";
+import Summary from "./summary-cancel/summary-cancel";
 const API = process.env.REACT_APP_API || "https://laundrycart-api.onrender.com"
 
 const OrderMain = () => {
@@ -17,8 +18,10 @@ const OrderMain = () => {
     
     const [ordersDetail, setOrderDetail] = useState([]);
     const [cancelDisplay, setCancelDisplay] = useState("none");
+    const [summaryDisplay, setSummaryDisplay] = useState("none")
     const [orderId, setOrderId] = useState(null);
-    // console.log(ordersDetail)
+    const [summaryData, setSummaryData] = useState([]);
+    const [ordersDetailVisibility, setVisibility] = useState(false);
     
     let token = localStorage.getItem("token");
     // const token ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzE2MzE0MDcsImRhdGEiOiI2M2EyYTU5YjNiZDVhNjYwZDFkNzY0MWYiLCJpYXQiOjE2NzE2Mjc4MDd9.FzsA_ZL6jUF84AJUfzAfvnE2CHInbtfUj6QJiD9fS8A"
@@ -28,6 +31,13 @@ const OrderMain = () => {
         setCancelDisplay("block")
         setOrderId(orderId)
         console.log("orderid::",orderId)
+    }
+
+    const summary = (orderId, data) => {
+        setSummaryDisplay("block");
+        setOrderId(orderId);
+        setSummaryData(data);
+        setVisibility(true)
     }
 
     useEffect(() => {
@@ -108,7 +118,7 @@ const OrderMain = () => {
                                         <td>{data.total_price} </td>
                                         <td style={{color: data.status === "canceled" ? "red" : "black"}}>{data.status}</td>
                                         <td className="cancel-order" onClick={() => cancelOrder(data._id)}>Cancel Order</td>
-                                        <td className="view-details"><i className="fa-solid fa-eye"></i></td>
+                                        <td className="view-details"><i className="fa-solid fa-eye" onClick={() => summary(data._id, data)}></i></td>
                                     </tr>
                             )
                         })}
@@ -121,6 +131,9 @@ const OrderMain = () => {
                 }
 
                 <CancelOrder display={cancelDisplay}  setCancelDisplay={setCancelDisplay} orderId={orderId} ordersDetail={ordersDetail} setOrderDetail={setOrderDetail} />
+
+                <Summary summaryDisplay={summaryDisplay} summaryData={summaryData} setSummaryDisplay={setSummaryDisplay} orderId={orderId} ordersDetail={ordersDetail} setOrderDetail={setOrderDetail} visibility={ordersDetailVisibility} />
+
 
                 
                 
