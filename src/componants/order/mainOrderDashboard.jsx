@@ -109,7 +109,7 @@ const OrderMain = () => {
                         {ordersDetail.map((data, i) => {
                             return (
                                     <tr className="table-body" key={i}>
-                                        <td>{data._id}</td>
+                                        <td>{`OR000${i+1}`}</td>
                                         <td>{data.createdAt}</td>
                                         <td>Noida</td>
                                         <td>Ludhiana</td>
