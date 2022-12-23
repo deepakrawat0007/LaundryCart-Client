@@ -18,7 +18,7 @@ const CancelOrder = (props) => {
      
         const tempOrders = props.ordersDetail.map((data)=>{
             if(data._id == props.orderId){
-                data.status = 'canceled'
+                data.status = 'Cancelled'
             }
             return data
         })

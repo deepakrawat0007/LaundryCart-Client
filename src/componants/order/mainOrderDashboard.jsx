@@ -116,7 +116,7 @@ const OrderMain = () => {
                                         <td>9875421356</td>
                                         <td>{data.orders.length}</td>
                                         <td>{data.total_price} </td>
-                                        <td style={{color: data.status === "canceled" ? "red" : "black"}}>{data.status}</td>
+                                        <td style={{color: data.status === "Cancelled" ? "red" : "black"}}>{data.status}</td>
                                         <td className="cancel-order" onClick={() => cancelOrder(data._id)}>Cancel Order</td>
                                         <td className="view-details"><i className="fa-solid fa-eye" onClick={() => summary(data._id, data)}></i></td>
                                     </tr>
