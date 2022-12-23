@@ -6,6 +6,7 @@ import Registration from './componants/login-registertion/registeration/register
 import OrderMain from './componants/order/mainOrderDashboard';
 import ForgotPassword from './componants/login-registertion/forgotPassword/forgotpwd';
 
+import CreateOrder from "./componants/order/CreateOrder/CreateOrder";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path='/register' element={<Registration />} />
           <Route path='/order' element={<OrderMain/>}/>
           <Route path='/forgotpassword' element={<ForgotPassword/>}/>
+          <Route path="/createorder" element={<CreateOrder/>}/>
         </Routes>
       </BrowserRouter>
       
