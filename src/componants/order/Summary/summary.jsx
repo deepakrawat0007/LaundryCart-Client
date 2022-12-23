@@ -75,7 +75,7 @@ export default function Summary(props){
             // console.log(completeData);
             async function postCall(){
                 try{
-                    let url = "https://laundrycart-api.onrender.com/createorder";
+                    let url =process.env.REACT_APP_API +"/createorder";
                     await axios(url,{
                         method: "post",
                         data:completeData,
