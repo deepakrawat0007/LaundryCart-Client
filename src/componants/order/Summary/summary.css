@@ -153,6 +153,7 @@
 }
 
 .address_container> address{
+    cursor: pointer;
     border: 1px solid #5861AE;
     height: 70px;
     width: 250px;
@@ -172,6 +173,13 @@
     font-size: 1.1em;
     color: #5861AE;
 }
+.add-tick{
+    position: absolute;
+    cursor: pointer;
+    bottom: 44%;
+    left: 29%;
+}
+
 
 /* --------- summary_confirm ------------ */
 

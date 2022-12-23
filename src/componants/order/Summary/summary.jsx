@@ -1,10 +1,15 @@
 import"./summary.css";
 import axios from "axios";
+import tick from "../../../Images/tick.png";
+import { useState } from "react";
 
 export default function Summary(props){
 
-    
+    const [click , setClick] = useState(false)
     const{summaryHandler,handleSucess,completeData} = props;
+    const handletick = ()=>{
+        click?setClick(false):setClick(true)
+    }
     return<div id="summary_holder">
         <div id="summary_page">
         <div id="summary_header">
@@ -48,7 +53,8 @@ export default function Summary(props){
             <div className="address_container">
             <address>
                 <p><b>Home</b></p>
-                <p>#223, 10th road, Jp Nagar, Bangalore</p>
+            {click?<img src={tick} className="add-tick" width="20px" height="20px" alt="tick" />:''}
+                <p onClick={handletick}>{localStorage.getItem('address')}</p>
             </address>
             <address>
                 <p><b>Other</b></p>
@@ -63,6 +69,7 @@ export default function Summary(props){
         <button 
         className="summary_confirm" 
         onClick={()=>{
+            setClick(false)
             handleSucess(true);
             summaryHandler(false);
             // console.log(completeData);
