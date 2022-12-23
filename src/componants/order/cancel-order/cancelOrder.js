@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import Axios from "axios";
 import "./cancelOrder.css"
+const API = process.env.REACT_APP_API || "https://laundrycart-api.onrender.com"
 
 const CancelOrder = (props) => {
     
     const cancelOrder = async () =>{
         const token = localStorage.getItem("token");
         console.log("calllll")
-        await fetch(`http://localhost:5000/updateorder/${props.orderId}`,{
+        await fetch(`${API}/updateorder/${props.orderId}`,{
             method: "PUT",
             headers : {
                 Authorization: token

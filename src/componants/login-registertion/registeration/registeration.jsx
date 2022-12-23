@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import tick from "../../../Images/tick.png";
 import Axios from 'axios';
 import load from "../../../Images/load.gif"
-const API = process.env.REACT_APP_API || "http://localhost:5000";
+const API = process.env.REACT_APP_API || "https://laundrycart-api.onrender.com";
 
 
 
