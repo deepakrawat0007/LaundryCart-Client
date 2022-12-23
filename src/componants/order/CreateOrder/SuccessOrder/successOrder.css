@@ -12,8 +12,8 @@
 
 
 .success_component{
-    width: 25vw;
-    height: 55vh;
+    width: 350px;
+    height: 400px;
     background-color: rgb(245, 243, 243);
     position: relative;
     top:25%;
