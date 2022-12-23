@@ -4,7 +4,6 @@ import CancelOrder from "../cancel-order/cancelOrder";
 import "./summary-cancel.css";
 
 export default function Summary(props) {
-
   const [cancelDisplay, setCancelDisplay] = useState("none");
   const dataDetail = props.summaryData;
   const orders = dataDetail.orders;
@@ -42,6 +41,16 @@ export default function Summary(props) {
           <dd>91 9999999999</dd>
         </dl>
       </div>
+      <div className="pg-container">
+      <div className="pg-bar">
+      <div  style={{color:dataDetail.status === "Cancelled"?"red":"green" , width:dataDetail.status === "Cancelled"?"460px":"10px" , backgroundColor:dataDetail.status === "Cancelled"?"red":"green" , height:"10px" , borderRadius:"5px"}}></div>
+      <span className="piked">pickedUp</span>
+      <span className="wash">Washed</span>
+      <span className="iron">Ironed</span>
+      <span className="del">{dataDetail.status === "Cancelled"?"Cancelled":"Delivered"}</span>
+      </div>
+      </div>
+      
       <div className="order_details">
         <p className="summary_title_name">Order Details</p>
         <div className="summary_orderlist">
@@ -61,7 +70,7 @@ export default function Summary(props) {
         <div className="total_price">Total :  Rs. {dataDetail.total_price} </div>
       </div>
       <div className="address_holder" >
-            <p className="address_title">Adderss</p>
+            <p className="address_title">Address</p>
             <div className="address_container">
             <address>
                 <p><b>Home</b></p>
@@ -77,7 +86,7 @@ export default function Summary(props) {
             </div>
         </div>
 
-      <button className="summary_confirm"  onClick={() => call()}>Cancel</button>
+      <button className="summary_cancel"  onClick={() => call()}>Cancel</button>
       
     </div>
   </div>
