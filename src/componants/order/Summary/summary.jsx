@@ -10,7 +10,7 @@ export default function Summary(props){
     const [error,setError] = useState(false);
     const{summaryHandler,handleSucess,completeData} = props;
     const handletick = ()=>{
-        click?setClick(false):setClick(true)
+        setClick(true)
     }
 
     function handleStoreSelect(e){
